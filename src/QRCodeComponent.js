@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import QRCode from 'qrcode.react';
 import './QRCodeComponent.css';
-import { trackEvent } from './ga';
+//import { trackEvent } from './ga';
 
 const QRCodeComponent = () => {
   const [activeTab, setActiveTab] = useState('text');
@@ -57,14 +57,14 @@ END:VCARD`;
 
   const generateVCardQRCode = () => {
     setVCardQRCode(generateVCardString());
-    trackEvent('QR Generation', 'Generate vCard QR', 'vCard QR generated');
+    //trackEvent('QR Generation', 'Generate vCard QR', 'vCard QR generated');
     setText(''); // Clear other QR codes
     setWhatsappQRCode('');
   };
 
   const generateWhatsAppQRCode = () => {
     setWhatsappQRCode(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`);
-    trackEvent('QR Generation', 'Generate WhatsApp QR', 'WhatsApp QR generated');
+   // trackEvent('QR Generation', 'Generate WhatsApp QR', 'WhatsApp QR generated');
     setText(''); // Clear other QR codes
     setVCardQRCode('');
   };
@@ -193,7 +193,7 @@ END:VCARD`;
 
         <div className="right-section">
           <h2>Generated QR Code</h2>
-          <br />
+          <br/>
           <div className="qr-code">
             {activeTab === 'text' && text && (
               <QRCode value={text}>
